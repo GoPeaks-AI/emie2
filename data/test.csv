@@ -1,0 +1,7 @@
+id,outcome,correlation,significance,number of samples,relative weight,rescaled weight
+External factors 1,Combined outcomes,0.1,,10,0,1.5
+External factors 2,Investor-specific outcomes,0.2,,20,0.1,2
+External factors 1,Investor-specific outcomes 1,0.1,,5,0.2,3
+External factors 1,Customer-specific outcomes 2,0.15,,45,0,1.2
+External factors 5,Investor-specific outcomes,0.2,,22,0,6
+External factors 5,Customer-specific outcomes 3,-0.1,,,,1
