@@ -2,6 +2,7 @@ from dash import Dash, html
 from components import data, graph
 
 app = Dash(__name__)
+server = app.server
 
 # Components
 input_header = html.H2("Knowledge Graph Input")
