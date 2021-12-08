@@ -1,0 +1,8 @@
+ID = "id"
+OUTCOME = "outcome"
+CORRELATION = "correlation"
+SIGNIFICANCE = "significance"
+SAMPLES = "number of samples"
+REL_WEIGHT = "relative weight"
+RESCALED_WEIGHT = "rescaled weight"
+WEIGHT = "weight"
