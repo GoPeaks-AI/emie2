@@ -1,23 +1,20 @@
 import networkx as nx
+import pandas as pd
 import dash_cytoscape as cyto
-
-
-# Column names
-ID = "id"
-OUTCOME = "outcome"
-CORRELATION = "correlation"
-WEIGHT = "weight"
+import columns as cols
 
 
 def init_graph(df):
-    # rename rescaled weight to weight for ease of use
-    df = df.rename(columns={"rescaled weight" : WEIGHT})
+    # Fix weights by converting values to float
+    # Divide it by 2 to scale them better
+    df[cols.WEIGHT] = pd.to_numeric(df[cols.RESCALED_WEIGHT], errors="coerce")
+    df[cols.WEIGHT] = df[cols.WEIGHT].fillna(0) / 2
     Graphtype = nx.DiGraph()
     G = nx.from_pandas_edgelist(
             df,
-            ID,
-            OUTCOME,
-            edge_attr=[CORRELATION, WEIGHT],
+            cols.ID,
+            cols.OUTCOME,
+            edge_attr=[cols.CORRELATION, cols.WEIGHT],
             create_using=Graphtype)
 
     return G
@@ -25,7 +22,7 @@ def init_graph(df):
 
 # Converting networkx data into cytoscape format
 def convert_nx_to_cyto(G):
-    pos = nx.circular_layout(G)
+    pos = nx.get_node_attributes(G, "pos")
     cy = nx.readwrite.json_graph.cytoscape_data(G)
 
     # Create node labels for cytoscape
@@ -34,7 +31,7 @@ def convert_nx_to_cyto(G):
             v["label"] = v.pop("value")
     
     # Add the node positions as a value for data in the nodes portion of cy
-    for n,p in zip(cy["elements"]["nodes"],pos.values()):
+    for n,p in zip(cy["elements"]["nodes"], pos.values()):
         n["pos"] = {"x":p[0],"y":p[1]}
       
     # Combine the dicts of nodes and edges to generate a list
@@ -43,11 +40,9 @@ def convert_nx_to_cyto(G):
     return elements
 
 
-def visualize_graph(df):
-    G = init_graph(df)
-    elements = convert_nx_to_cyto(G)
+def visualize_graph(elements):
     cytoscape = cyto.Cytoscape(
-            id="cytoscape",
+            id="knowledge-graph",
             layout={ "name" : "circle" },
             elements=elements,
             style={"width": "100%", "height": "600px"},
