@@ -45,36 +45,35 @@ def visualize_graph(elements):
             id="knowledge-graph",
             layout={ "name" : "circle" },
             elements=elements,
-            style={"width": "100%", "height": "600px"},
+            style={"width": "100%", "height": "720px"},
             userZoomingEnabled=False,
             stylesheet=[
                 {
                     "selector": "node",
                     "style": {
-                        "content": "data(label)"
+                        "content": "data(label)",
                     }
                 },
                 {
                     "selector": "edge",
                     "style": {
-                        "width": "data(weight)"
+                        "width": "data(weight)",
+                        "curve-style": "straight",
+                        "target-arrow-shape": "triangle",
+                        "source-endpoint": "inside-to-node"
                     }
                 },
                 {
                     "selector": "[correlation < 0]",
                     "style": {
-                        "mid-target-arrow-color": "#f92411",
-                        "mid-target-arrow-shape": "triangle-backcurve",
-                        "arrow-scale": "1.5",
+                        "target-arrow-color": "#f92411",
                         "line-color": "#f92411"
                     }
                 },
                 {
                     "selector": "[correlation > 0]",
                     "style": {
-                        "mid-target-arrow-color": "#61bbfc",
-                        "mid-target-arrow-shape": "triangle-backcurve",
-                        "arrow-scale": "1.5",
+                        "target-arrow-color": "#61bbfc",
                         "line-color": "#61bbfc"
                     }
                 },    
