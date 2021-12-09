@@ -80,6 +80,8 @@ def update_data(content, filename):
     content_type, content_string = content.split(",")
     decoded = base64.b64decode(content_string)
 
+    error = html.P("Invalid input. Make sure you upload a CSV file with the necessary columns.")
+    success = html.P("File uploaded: {}".format(filename))
     try:
         if "csv" in filename:
             df = pd.read_csv(io.StringIO(decoded.decode("utf-8")))
@@ -92,11 +94,11 @@ def update_data(content, filename):
                 cols.REL_WEIGHT,
                 cols.RESCALED_WEIGHT]).issubset(df.columns):
                 
-                return "Invalid columns", no_update, no_update, no_update, no_update, no_update, no_update
+                return error, no_update, no_update, no_update, no_update, no_update, no_update
         else:
-            return "Error", no_update, no_update, no_update, no_update, no_update, no_update
+            return error, no_update, no_update, no_update, no_update, no_update, no_update
     except Exception as e:
-        return "Error", no_update, no_update, no_update, no_update, no_update, no_update
+        return error, no_update, no_update, no_update, no_update, no_update, no_update
 
     data_table = data.make_data_table(df)
     G = graph.init_graph(df)
@@ -105,7 +107,7 @@ def update_data(content, filename):
     preds = data.make_preds_dropdown(df)
     outcomes = data.make_outcome_dropdown(df)
 
-    return "File uploaded: {}".format(filename), df.to_dict("records"), elements, data_table, viz, preds, outcomes
+    return success, df.to_dict("records"), elements, data_table, viz, preds, outcomes
 
 
 # Callback for filtering data
