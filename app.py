@@ -20,7 +20,7 @@ df = pd.read_csv("data/dataset.csv")
 input_header = html.H2("Knowledge Graph Input")
 upload_button = dcc.Upload(
         id="upload-data",
-        children=html.Button("Upload file")
+        children=html.Button("Upload csv")
     )
 upload_result = html.Div(id="upload-result")
 output_header = html.H2("Knowledge Graph Output")
@@ -31,8 +31,12 @@ elements = graph.convert_nx_to_cyto(G)
 viz = graph.visualize_graph(elements)
 
 
-app.layout = html.Div([
+app.layout = html.Div(className="container", children=[
         input_header,
+        html.P(children=[
+            "You may upload your own input file to generate a knowledge graph. Make sure it is a csv file with the following columns: ",
+            html.B("id, outcome, correlation, significance, number of samples, relative weight, rescaled weight")
+        ]),
         upload_result,
         upload_button,
         html.Div([
