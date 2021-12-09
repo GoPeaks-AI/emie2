@@ -8,7 +8,7 @@ import pandas as pd
 import columns as cols
 
 
-app = Dash(__name__)
+app = Dash(__name__, title="Knowledge Graph Visualization")
 server = app.server
 
 
@@ -20,7 +20,7 @@ df = pd.read_csv("data/dataset.csv")
 input_header = html.H2("Knowledge Graph Input")
 upload_button = dcc.Upload(
         id="upload-data",
-        children=html.Button("Upload csv")
+        children=html.Button("Upload CSV")
     )
 upload_result = html.Div(id="upload-result")
 output_header = html.H2("Knowledge Graph Output")
