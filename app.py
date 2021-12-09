@@ -36,14 +36,14 @@ app.layout = html.Div([
         upload_result,
         upload_button,
         html.Div([
-            html.H4("Select predictors"),
+            html.H3("Select predictors"),
             html.Div(
                 id="preds-div",
                 children=data.make_preds_dropdown(df)
             )
         ]),
         html.Div([
-            html.H4("Select outcomes"),
+            html.H3("Select outcomes"),
             html.Div(
                 id="outcomes-div",
                 children=data.make_outcome_dropdown(df)

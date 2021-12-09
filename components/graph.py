@@ -46,8 +46,7 @@ def visualize_graph(elements):
             layout={ "name" : "circle" },
             elements=elements,
             style={"width": "100%", "height": "600px"},
-            minZoom=0.8,
-            maxZoom=1,
+            userZoomingEnabled=False,
             stylesheet=[
                 {
                     "selector": "node",
