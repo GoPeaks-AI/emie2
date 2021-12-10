@@ -64,6 +64,12 @@ def visualize_graph(elements):
                     }
                 },
                 {
+                    "selector": "[correlation = 0]",
+                    "style": {
+                        "width": "1",
+                    }
+                },
+                {
                     "selector": "[correlation < 0]",
                     "style": {
                         "target-arrow-color": "#f92411",
