@@ -1,3 +1,15 @@
+:root {
+        --white: #f4f4f4;
+        --jet: #2f2f2f;
+        --dark-blue: #2E4756;
+        --darker-blue: #253544;
+}
+
+html, body {
+        margin: 0;
+        padding: 0;
+}
+
 body {
         font-weight: 400;
         font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -8,12 +20,34 @@ button {
         cursor: pointer;
 }
 
+.button {
+        display: inline-block;
+        height: 38px;
+        padding: 0 30px;
+        text-align: center;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 38px;
+        letter-spacing: .1rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: var(--dark-blue);
+        color: var(--white);
+        border: none;
+        border-radius: 4px;
+}
+
+.button:hover {
+        background-color: var(--darker-blue);
+}
+
 .container {
         width: 100%;
         max-width: 960px;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 2em;
+        color: var(--jet);
 }
 
 #upload-data, #upload-result {
@@ -26,5 +60,15 @@ button {
 }
 
 #graph-div {
-        background-color: #f4f4f4;
+        background-color: var(--white);
+}
+
+.footer {
+        display: flex;
+        justify-content: center;
+        margin-top: 3em;
+        background-color: var(--jet);
+        color: var(--white);
+        padding: 2em 6em 2em 6em;
+        font-size: 14px;
 }

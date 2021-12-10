@@ -8,7 +8,7 @@ import pandas as pd
 import columns as cols
 
 
-app = Dash(__name__, title="Knowledge Graph Visualization")
+app = Dash(__name__, title="EMIE 2.0 - Knowledge Graph Visualization")
 server = app.server
 
 
@@ -20,7 +20,7 @@ df = pd.read_csv("data/dataset.csv")
 input_header = html.H2("Knowledge Graph Input")
 upload_button = dcc.Upload(
         id="upload-data",
-        children=html.Button("Upload CSV")
+        children=html.Button(className="button", children="Upload CSV")
     )
 upload_result = html.Div(id="upload-result")
 output_header = html.H2("Knowledge Graph Output")
@@ -30,8 +30,13 @@ G = graph.init_graph(df)
 elements = graph.convert_nx_to_cyto(G)
 viz = graph.visualize_graph(elements)
 
+footer = html.Footer(
+            className="footer",
+            children="Developed by Sharad Swaminathan (sswamin5@uncc.edu) at the University of North Carolina at Charlotte, EMIE2.0 is built in Python for curating and visualizing relationship knowledge data, with a preloaded data of meta-analytic findings of drivers for organizational performance outcomes. This is a product of the GoPeaks Initiative. All copyrights are reserved."
+        )
 
-app.layout = html.Div(className="container", children=[
+app.layout = html.Div(children=[
+        html.Div(className="container", children=[
         input_header,
         html.P(children=[
             "You may upload your own input file to generate a knowledge graph. Make sure it is a csv file with the following columns: ",
@@ -55,10 +60,11 @@ app.layout = html.Div(className="container", children=[
         ]),
         html.Div(id="table-div", children=data_table),
         output_header,
-        html.Div(id="graph-div", children=viz),
+        html.Div(id="graph-div", children=viz)]),
+        footer,
         dcc.Store(id="data-store"),
         dcc.Store(id="graph-store")
-])
+    ])
 
 
 # Callback for file upload and update components
