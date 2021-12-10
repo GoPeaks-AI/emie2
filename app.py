@@ -30,6 +30,7 @@ G = graph.init_graph(df)
 elements = graph.convert_nx_to_cyto(G)
 viz = graph.visualize_graph(elements)
 
+export_button = html.Button(id="export", className="button", children="Download JPG")
 footer = html.Footer(
             className="footer",
             children="Developed by Sharad Swaminathan (sswamin5@uncc.edu) at the University of North Carolina at Charlotte, EMIE2.0 is built in Python for curating and visualizing relationship knowledge data, with a preloaded data of meta-analytic findings of drivers for organizational performance outcomes. This is a product of the GoPeaks Initiative. All copyrights are reserved."
@@ -60,6 +61,7 @@ app.layout = html.Div(children=[
         ]),
         html.Div(id="table-div", children=data_table),
         output_header,
+        html.Div(id="export-div", children=export_button),
         html.Div(id="graph-div", children=viz)]),
         footer,
         dcc.Store(id="data-store"),
@@ -162,5 +164,18 @@ def filter_data(preds, outcomes, data, graph_data):
     return filtered_df.to_dict("records"), filtered_elems
 
 
+# Callback for exporting graph
+@app.callback(
+        dependencies.Output("knowledge-graph", "generateImage"),
+        dependencies.Input("export", "n_clicks"),
+        prevent_initial_call=True
+    )
+def export_graph(btn_click):
+    return {
+            "type": "jpg",
+            "action": "download"
+        }
+
+
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server()

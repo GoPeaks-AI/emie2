@@ -45,7 +45,12 @@ def visualize_graph(elements):
             id="knowledge-graph",
             layout={ "name" : "circle" },
             elements=elements,
-            style={"width": "100%", "height": "720px"},
+            style={
+                "width": "100%", 
+                "height": "720px", 
+                "background-color": "#f4f4f4", 
+                "margin-top": "1em"
+            },
             userZoomingEnabled=False,
             stylesheet=[
                 {

@@ -50,17 +50,13 @@ button {
         color: var(--jet);
 }
 
-#upload-data, #upload-result {
+#upload-data, #upload-result, #export-div {
         display: flex;
         justify-content: center;
 }
 
 #table-div {
         margin-top: 2em;
-}
-
-#graph-div {
-        background-color: var(--white);
 }
 
 .footer {
