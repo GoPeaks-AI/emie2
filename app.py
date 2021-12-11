@@ -88,7 +88,7 @@ def update_data(content, filename):
     content_type, content_string = content.split(",")
     decoded = base64.b64decode(content_string)
 
-    error = html.P("Invalid input. Make sure you upload a CSV file with the necessary columns.")
+    error = html.P(className="red-text", children="Invalid input. Make sure you upload a CSV file with the necessary columns.")
     success = html.P("File uploaded: {}".format(filename))
     try:
         if "csv" in filename:

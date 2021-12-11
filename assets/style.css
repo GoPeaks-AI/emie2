@@ -3,6 +3,8 @@
         --jet: #2f2f2f;
         --dark-blue: #2E4756;
         --darker-blue: #253544;
+        --red: #f92411;
+        --light-blue: #61bbfc;
 }
 
 html, body {
@@ -67,4 +69,8 @@ button {
         color: var(--white);
         padding: 2em 6em 2em 6em;
         font-size: 14px;
+}
+
+.red-text {
+        color: var(--red);
 }
