@@ -16,4 +16,4 @@ Run ```app.py```
 ```
 python app.py
 ```
-The application can now be viewed at [https://localhost:8050](https://localhost:8050).
+The application can now be viewed at [http://localhost:8050](http://localhost:8050).
