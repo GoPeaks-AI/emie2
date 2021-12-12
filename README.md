@@ -1,7 +1,7 @@
 # EMIE 2.0
-EMIE 2.0 is a browser-based Python application, written using the Dash framework, that visualizes a knowledge graph. Users can also upload their own dataset as input and filter the visualized data. Additionally, the graph can also be downloaded as a jpg.
+EMIE 2.0 is a browser-based Python application, written using the [Dash](https://github.com/plotly/dash) framework, that visualizes a knowledge graph. Users can upload their own dataset as input and filter the visualized data. Additionally, the graph can also be downloaded as a jpg.
 
-It uses ```networkx``` to create a graph data structure and visualizes it using ```dash-cytoscape```.
+It uses [networkx](https://github.com/networkx/networkx) to create a graph data structure and visualizes it using [dash-cytoscape](https://github.com/plotly/dash-cytoscape).
 
 The application is hosted at: [https://gopeaks-emie2.herokuapp.com](https://gopeaks-emie2.herokuapp.com)
 
