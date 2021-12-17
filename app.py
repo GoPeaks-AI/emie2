@@ -37,6 +37,10 @@ footer = html.Footer(
         )
 
 app.layout = html.Div(children=[
+        html.Div(className="navbar", children=[
+            html.Img(src="/assets/logo.png"),
+            html.Span(className="navbar-text", children="EMIE 2.0")
+        ]),
         html.Div(className="container", children=[
         input_header,
         html.P(children=[

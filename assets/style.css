@@ -74,3 +74,18 @@ button {
 .red-text {
         color: var(--red);
 }
+
+.navbar {
+        display: flex;
+        background-color: var(--dark-blue);
+        height: 2em;
+        padding: 12px 12px 12px 6em;
+}
+
+.navbar-text {
+        color: var(--white);
+        font-size: 20px;
+        font-weight: 600;
+        align-self: center;
+        padding: 12px;
+}
